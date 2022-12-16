@@ -2,15 +2,6 @@ const express = require("express");
 
 const router = express.Router();
 
-// Gestion des items
-const itemControllers = require("./controllers/itemControllers");
-
-router.get("/api/items", itemControllers.browse);
-router.get("/api/items/:id", itemControllers.read);
-router.put("/api/items/:id", itemControllers.edit);
-router.post("/api/items", itemControllers.add);
-router.delete("/api/items/:id", itemControllers.destroy);
-
 // Gestion des articles
 const articleControllers = require("./controllers/articleControllers");
 
