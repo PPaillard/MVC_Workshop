@@ -7,17 +7,17 @@ class ArticleManager extends AbstractManager {
 
   insert(article) {
     return this.connection.query(
-      `INSERT INTO ${this.table} (title, content, author)
+      `INSERT INTO ${this.table} (title, content, user_id)
     VALUES(?,?,?)`,
-      [article.title, article.content, article.author]
+      [article.title, article.content, article.user_id]
     );
   }
 
   update(article) {
     return this.connection.query(
       `UPDATE ${this.table} SET title = ?, content = ?,
-    author = ? WHERE id = ? `,
-      [article.title, article.content, article.author, article.id]
+      user_id = ? WHERE id = ? `,
+      [article.title, article.content, article.user_id, article.id]
     );
   }
 }

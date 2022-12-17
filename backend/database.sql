@@ -65,13 +65,12 @@ CREATE TABLE article (
   id int(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
   title varchar(255) NOT NULL,
   content varchar(255) NOT NULL,
-  author varchar(255) NOT NULL,
   user_id INT NOT NULL,
   FOREIGN KEY (user_id) REFERENCES user(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO article (title, content, author, user_id) VALUES ('Article 1', "Mon super contenu !!", "Moi même", 1),
-('Article 2', "Mon autre super contenu", "Morgot", 2);
+INSERT INTO article (title, content, user_id) VALUES ('Article 1', "Mon super contenu !!", 1),
+('Article 2', "Mon autre super contenu", 2);
 
 
 /* On reactive la verification des clés étrangères*/
