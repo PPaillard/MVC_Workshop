@@ -29,6 +29,7 @@ const read = (req, res) => {
 
 const add = (req, res) => {
   const article = req.body;
+  article.user_id = req.payloads.sub
 
   models.article
     .insert(article)

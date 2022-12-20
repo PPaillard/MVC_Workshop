@@ -11,12 +11,13 @@ const pool = mysql.createPool({
   database: DB_NAME,
 });
 
-pool.getConnection().catch(() => {
+pool.getConnection().catch((err) => {
   console.warn(
     "Warning:",
     "Failed to get a DB connection.",
     "Did you create a .env file with valid credentials?",
-    "Routes using models won't work as intended"
+    "Routes using models won't work as intended",
+    err
   );
 });
 
