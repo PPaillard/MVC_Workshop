@@ -13,7 +13,7 @@ router.post("/api/register", hashPassword, userControllers.add);
 router.post("/api/login", authControllers.getUserByEmailWithPasswordAndPassToNext, verifyPassword);
 
 // Gestion des articles
-router.get("/api/articles", articleControllers.browse);
+router.get("/api/articles", verifyToken, articleControllers.browse);
 router.get("/api/articles/:id", articleControllers.read);
 router.post("/api/articles", verifyToken,  articleControllers.add);
 router.put("/api/articles/:id", verifyToken, articleControllers.edit);

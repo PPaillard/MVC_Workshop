@@ -4,12 +4,15 @@ import { useContext } from "react"
 import CurrentUserContext from "../contexts/userContext"
 
 function Header() {
-  const { user } = useContext(CurrentUserContext)
+  const { user, setUser } = useContext(CurrentUserContext)
 
   const navigate = useNavigate()
 
   const handleDisconnection = () => {
     // gestion de la deconnexion
+    localStorage.clear()
+    setUser({})
+    navigate("/")
   }
 
   return (

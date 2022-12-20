@@ -32,6 +32,7 @@ function Login() {
       .then(response => response.json())
       .then(result=>{
         setUser(result.user)
+        localStorage.setItem("token", result.token)
         navigate("/")
       })
       .catch(console.error)
