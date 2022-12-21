@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useCurrentUserContext } from "../contexts/userContext"
 
 import Article from "../components/Article"
 
 function Articles() {
+  const {token} = useCurrentUserContext()
   const [articles, setArticles] = useState([])
   const navigate = useNavigate()
 
   useEffect(() => {
     // recupération des articles.
     const myHeader = new Headers()
-    myHeader.append("Authorization","Bearer " + localStorage.getItem("token"))
+    myHeader.append("Authorization","Bearer " + token)
 
     const requestOptions = {
       headers : myHeader

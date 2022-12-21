@@ -5,7 +5,7 @@ import { useCurrentUserContext } from "../contexts/userContext"
 
 
 function Login() {
-  const { setUser} = useCurrentUserContext()
+  const { setUser, setToken} = useCurrentUserContext()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
@@ -32,7 +32,7 @@ function Login() {
       .then(response => response.json())
       .then(result=>{
         setUser(result.user)
-        localStorage.setItem("token", result.token)
+        setToken(result.token)
         navigate("/")
       })
       .catch(console.error)
