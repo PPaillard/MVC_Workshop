@@ -1,36 +1,40 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
-  const [email, setEmail] = useState("")
-  const [firstname, setFirstname] = useState("")
-  const [lastname, setLastname] = useState("")
-  const [city, setCity] = useState("")
-  const [password, setPassword] = useState("")
+  const [email, setEmail] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [city, setCity] = useState("");
+  const [password, setPassword] = useState("");
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleForm = (e) => {
-    const myHeaders = new Headers()
-    myHeaders.append("Content-Type", "application/json")
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
 
     const body = JSON.stringify({
-      email, firstname, lastname, city, password
-    })
+      email,
+      firstname,
+      lastname,
+      city,
+      password,
+    });
 
     const requestOptions = {
-      method: 'POST',
+      method: "POST",
       headers: myHeaders,
-      body
+      body,
     };
-    e.preventDefault()
+    e.preventDefault();
     // on créé et on redirige
     fetch("http://localhost:5000/api/register", requestOptions)
       .then(() => {
-        navigate("/login")
+        navigate("/login");
       })
-      .catch(console.error)
-  }
+      .catch(console.error);
+  };
 
   return (
     <form
@@ -97,7 +101,7 @@ function SignUp() {
         Inscription
       </button>
     </form>
-  )
+  );
 }
 
-export default SignUp
+export default SignUp;

@@ -1,19 +1,19 @@
-import { Link, useNavigate } from "react-router-dom"
-import { useContext } from "react"
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
 
-import CurrentUserContext from "../contexts/userContext"
+import CurrentUserContext from "../contexts/userContext";
 
 function Header() {
-  const { user, setUser } = useContext(CurrentUserContext)
+  const { user, setUser } = useContext(CurrentUserContext);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleDisconnection = () => {
     // gestion de la deconnexion
-    localStorage.clear()
-    setUser({})
-    navigate("/")
-  }
+    localStorage.clear();
+    setUser({});
+    navigate("/");
+  };
 
   return (
     <header>
@@ -31,7 +31,7 @@ function Header() {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
@@ -44,6 +44,7 @@ function Header() {
                   </li>
                   <li className="nav-item">
                     <button
+                      type="button"
                       onClick={handleDisconnection}
                       className="ml-auto btn btn-danger"
                     >
@@ -69,9 +70,9 @@ function Header() {
           </div>
         </div>
       </nav>
-      <nav></nav>
+      <nav />
     </header>
-  )
+  );
 }
 
-export default Header
+export default Header;
