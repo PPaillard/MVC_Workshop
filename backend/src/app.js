@@ -6,6 +6,12 @@ const router = require("./router");
 
 const app = express();
 
+// ajout pour debug
+app.use((req, res, next) => {
+  console.warn("%s %s", req.method, req.url);
+  next();
+});
+
 // use some application-level middlewares
 app.use(
   cors({

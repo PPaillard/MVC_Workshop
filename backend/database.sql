@@ -9,7 +9,8 @@ CREATE TABLE user (
     email varchar(255) UNIQUE NOT NULL,
     city varchar(255) DEFAULT NULL,
     language varchar(255) DEFAULT NULL,
-    hashedPassword varchar(255) NOT NULL
+    hashedPassword varchar(255) NOT NULL,
+    avatar varchar(255) DEFAULT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 INSERT INTO
