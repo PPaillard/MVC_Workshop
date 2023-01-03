@@ -53,13 +53,6 @@ class UserManager extends AbstractManager {
       ]
     );
   }
-
-  updateAvatar(id, avatar) {
-    return this.connection.query(
-      `update ${this.table} set avatar = ? where id = ?`,
-      [avatar, id]
-    );
-  }
 }
 
 module.exports = UserManager;

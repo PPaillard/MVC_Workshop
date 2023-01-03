@@ -1,8 +1,12 @@
 const express = require("express");
+// Ajout de multer
 const multer = require("multer");
 
+const fileDirectory = process.env.AVATAR_DIRECTORY
+
+// On définit la destination de stockage de nos fichiers
+const upload = multer({ dest: fileDirectory });
 const router = express.Router();
-const upload = multer({ dest: process.env.AVATAR_DIRECTORY });
 
 // services d'auth
 const {
@@ -14,7 +18,7 @@ const {
 const authControllers = require("./controllers/authControllers");
 const articleControllers = require("./controllers/articleControllers");
 const userControllers = require("./controllers/userControllers");
-const fileControllers = require("./controllers/fileControllers");
+const uploadControllers = require("./controllers/uploadControllers")
 
 // Auth
 router.post("/api/register", hashPassword, userControllers.add);
@@ -38,14 +42,8 @@ router.post("/api/users", hashPassword, verifyToken, userControllers.add);
 router.put("/api/users/:id", hashPassword, verifyToken, userControllers.edit);
 router.delete("/api/users/:id", verifyToken, userControllers.destroy);
 
-// Gestion des avatars
-router.post(
-  "/api/avatars",
-  verifyToken,
-  upload.single("avatar"),
-  fileControllers.renameAvatar,
-  userControllers.updateAvatar
-);
-router.get("/api/avatars/:fileName", fileControllers.sendAvatar);
+// Upload de fichier
+// route POST pour recevoir un fichier dont le nom est "avatar"
+router.post("/api/avatar", upload.single("avatar"), uploadControllers.renameFile );
 
 module.exports = router;

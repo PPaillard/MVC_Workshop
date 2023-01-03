@@ -3,8 +3,6 @@ import { useContext } from "react";
 
 import CurrentUserContext from "../contexts/userContext";
 
-const BACK_END_URL = import.meta.env.VITE_BACKEND_URL;
-
 function Header() {
   const { user, setUser } = useContext(CurrentUserContext);
 
@@ -52,15 +50,6 @@ function Header() {
                     >
                       Disconnect
                     </button>
-                  </li>
-                  <li className="nav-item">
-                    {/* TODO lien vers le profil */}
-                    <img
-                      src={`${BACK_END_URL}/api/avatars/${user.avatar}`}
-                      alt="Avatar"
-                      width={24}
-                      height={24}
-                    />
                   </li>
                 </>
               ) : (
