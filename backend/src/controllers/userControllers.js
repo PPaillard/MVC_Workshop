@@ -73,10 +73,26 @@ const destroy = (req, res) => {
     });
 };
 
+const addAvatar = (req, res) => {
+  const {filename} = req;
+  const idUser = req.payloads.sub
+
+  models.user.updateAvatar(idUser, filename)
+  .then(([result]) => {
+    if (result.affectedRows === 0) res.sendStatus(404);
+    else res.status(201).send({filename})
+  })
+  .catch((error) => {
+    console.error(error);
+    res.sendStatus(500);
+  });
+}
+
 module.exports = {
   browse,
   read,
   add,
   edit,
   destroy,
+  addAvatar,
 };

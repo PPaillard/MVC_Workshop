@@ -18,7 +18,7 @@ const {
 const authControllers = require("./controllers/authControllers");
 const articleControllers = require("./controllers/articleControllers");
 const userControllers = require("./controllers/userControllers");
-const uploadControllers = require("./controllers/uploadControllers")
+const uploadControllers = require("./services/uploadMiddleware")
 
 // Auth
 router.post("/api/register", hashPassword, userControllers.add);
@@ -44,6 +44,6 @@ router.delete("/api/users/:id", verifyToken, userControllers.destroy);
 
 // Upload de fichier
 // route POST pour recevoir un fichier dont le nom est "avatar"
-router.post("/api/avatar", upload.single("avatar"), uploadControllers.renameFile );
+router.post("/api/avatar",verifyToken, upload.single("avatar"), uploadControllers.renameFile, userControllers.addAvatar);
 
 module.exports = router;
