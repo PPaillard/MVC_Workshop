@@ -73,7 +73,7 @@ const destroy = (req, res) => {
     });
 };
 
-const addAvatar = (req, res) => {
+const updateAvatar = (req, res) => {
   const {filename} = req;
   const idUser = req.payloads.sub
 
@@ -94,5 +94,5 @@ module.exports = {
   add,
   edit,
   destroy,
-  addAvatar,
+  updateAvatar,
 };

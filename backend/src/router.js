@@ -44,6 +44,6 @@ router.delete("/api/users/:id", verifyToken, userControllers.destroy);
 
 // Upload de fichier
 // route POST pour recevoir un fichier dont le nom est "avatar"
-router.post("/api/avatar",verifyToken, upload.single("avatar"), uploadControllers.renameFile, userControllers.addAvatar);
+router.post("/api/avatar",verifyToken, upload.single("avatar"), uploadControllers.renameFile, userControllers.updateAvatar);
 
 module.exports = router;
