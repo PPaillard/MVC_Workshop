@@ -1,7 +1,7 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.user
+  models.caserne
     .findAll()
     .then(([results]) => {
       res.send(results);
@@ -15,7 +15,7 @@ const browse = (req, res) => {
 const read = (req, res) => {
   const { id } = req.params;
 
-  models.user
+  models.caserne
     .find(id)
     .then(([results]) => {
       if (results[0]) res.send(results[0]);
@@ -28,12 +28,10 @@ const read = (req, res) => {
 };
 
 const add = (req, res) => {
-  const user = req.body;
+  const caserne = req.body;
 
-  // on verifie les données
-
-  models.user
-    .insert(user)
+  models.caserne
+    .insert(caserne)
     .then(res.sendStatus(201))
     .catch((error) => {
       console.error(error);
@@ -42,11 +40,11 @@ const add = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const user = req.body;
-  user.id = req.params.id;
+  const caserne = req.body;
+  caserne.id = req.params.id;
 
-  models.user
-    .update(user)
+  models.caserne
+    .update(caserne)
     .then(([result]) => {
       if (result.affectedRows === 0) res.sendStatus(404);
       else res.sendStatus(204);
@@ -59,27 +57,11 @@ const edit = (req, res) => {
 
 const destroy = (req, res) => {
   const { id } = req.params;
-  models.user
+  models.caserne
     .delete(id)
     .then(([result]) => {
       if (result.affectedRows === 0) res.sendStatus(404);
       else res.sendStatus(204);
-    })
-    .catch((error) => {
-      console.error(error);
-      res.sendStatus(500);
-    });
-};
-
-const updateAvatar = (req, res) => {
-  const id = req.payloads.sub;
-  const { avatar } = req;
-
-  models.user
-    .updateAvatar(id, avatar)
-    .then(([result]) => {
-      if (result.affectedRows === 0) res.sendStatus(404);
-      else res.status(202).send({ avatar });
     })
     .catch((error) => {
       console.error(error);
@@ -93,5 +75,4 @@ module.exports = {
   add,
   edit,
   destroy,
-  updateAvatar,
 };
