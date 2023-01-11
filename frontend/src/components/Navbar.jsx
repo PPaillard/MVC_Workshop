@@ -1,32 +1,9 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React from "react";
 
-export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-
+export default function Header() {
   return (
-    <div>
-      {isOpen ? (
-        <div className="m-2 relative">
-          <ul className="h-full absolute flex-col justify-between">
-            <li className="cursor-pointer">
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li className="cursor-pointer">
-              <NavLink to="/vehicles">Vehicles</NavLink>
-            </li>
-            <li className="cursor-pointer">
-              <NavLink to="/events">Events</NavLink>
-            </li>
-          </ul>
-        </div>
-      ) : (
-        <div>
-          <button type="button" onClick={() => setIsOpen(true)}>
-            Open
-          </button>
-        </div>
-      )}
+    <div className="w-[100%] h-[12vh] border-b border-slate-400 flex items-center">
+      <div className="text-center w-full">Bondy on est la!</div>
     </div>
   );
 }
