@@ -1,11 +1,7 @@
 import React from "react";
 
 function Home() {
-  return (
-    <div className="d-flex h-100">
-      <h1 className="m-auto text-purple-800">Wild Library</h1>
-    </div>
-  );
+  return <div className="">home</div>;
 }
 
 export default Home;

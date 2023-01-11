@@ -1,22 +1,18 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import { BrowserRouter } from "react-router-dom";
 import "./styles/App.css";
-
+import Router from "./components/Router";
 import Header from "./components/Header";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
+import Navbar from "./components/Navbar";
 
 import { CurrentUserContextProvider } from "./contexts/userContext";
 
 function App() {
   return (
     <BrowserRouter>
+      <Header />
+      <Navbar />
       <CurrentUserContextProvider>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
+        <Router />
       </CurrentUserContextProvider>
     </BrowserRouter>
   );

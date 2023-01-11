@@ -1,22 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-function Navbar() {
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div className="navigation">
-      <ul>
-        <NavLink to="/" className={(nav) => (nav.isActive ? "nav-active" : "")}>
-          <li className="home">Home</li>
-        </NavLink>
-        <NavLink
-          to="/login"
-          className={(nav) => (nav.isActive ? "nav-active" : "")}
-        >
-          <li className="profil">Profil</li>
-        </NavLink>
-      </ul>
+    <div>
+      {isOpen ? (
+        <div className="m-2 relative">
+          <ul className="h-full absolute flex-col justify-between">
+            <li className="cursor-pointer">
+              <NavLink to="/">Home</NavLink>
+            </li>
+            <li className="cursor-pointer">
+              <NavLink to="/vehicles">Vehicles</NavLink>
+            </li>
+            <li className="cursor-pointer">
+              <NavLink to="/events">Events</NavLink>
+            </li>
+          </ul>
+        </div>
+      ) : (
+        <div>
+          <button type="button" onClick={() => setIsOpen(true)}>
+            Open
+          </button>
+        </div>
+      )}
     </div>
   );
 }
-
-export default Navbar;
