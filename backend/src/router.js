@@ -12,7 +12,8 @@ const {
 } = require("./services/auth");
 
 const authControllers = require("./controllers/authControllers");
-const articleControllers = require("./controllers/articleControllers");
+const caserneControllers = require("./controllers/caserneControllers");
+const vehicleControllers = require("./controllers/vehicleControllers");
 const userControllers = require("./controllers/userControllers");
 const fileControllers = require("./controllers/fileControllers");
 
@@ -24,17 +25,24 @@ router.post(
   verifyPassword
 );
 
-// Gestion des articles
-router.get("/api/articles", verifyToken, articleControllers.browse);
-router.get("/api/articles/:id", articleControllers.read);
-router.post("/api/articles", verifyToken, articleControllers.add);
-router.put("/api/articles/:id", verifyToken, articleControllers.edit);
-router.delete("/api/articles/:id", verifyToken, articleControllers.destroy);
+// Gestion des casernes
+router.get("/api/caserne", verifyToken, caserneControllers.browse);
+router.get("/api/caserne/:id", caserneControllers.read);
+router.post("/api/caserne", caserneControllers.add);
+router.put("/api/caserne/:id", caserneControllers.edit);
+router.delete("/api/caserne/:id", caserneControllers.destroy);
+
+// Gestion des vehicles
+router.get("/api/vehicle", vehicleControllers.browse);
+router.get("/api/vehicle/:id", vehicleControllers.read);
+router.post("/api/vehicle", vehicleControllers.add);
+router.put("/api/vehicle/:id", vehicleControllers.edit);
+router.delete("/api/vehicle/:id", vehicleControllers.destroy);
 
 // Gestion des users
 router.get("/api/users", userControllers.browse);
 router.get("/api/users/:id", userControllers.read);
-router.post("/api/users", hashPassword, verifyToken, userControllers.add);
+router.post("/api/users", hashPassword, userControllers.add);
 router.put("/api/users/:id", hashPassword, verifyToken, userControllers.edit);
 router.delete("/api/users/:id", verifyToken, userControllers.destroy);
 
