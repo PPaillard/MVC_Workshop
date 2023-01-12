@@ -126,3 +126,25 @@ VALUE
 
 INSERT INTO user
 VALUE
+
+-- -----------------------------------------------------
+-- Table `firemen`.`vehicle`
+-- -----------------------------------------------------
+CREATE TABLE
+IF NOT EXISTS `firemen`.`vehicle`
+(
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `modele` VARCHAR
+(100) NOT NULL,
+  `category` VARCHAR
+(45) NOT NULL,
+  `is_available` TINYINT NOT NULL,
+  `caserne_id` INT NOT NULL,
+  `in_maintenance` TINYINT NOT NULL,
+  PRIMARY KEY
+(`id`),
+  FOREIGN KEY
+(`caserne_id`)
+  REFERENCES `firemen`.`caserne`
+(`id`))
+ENGINE = InnoDB;
