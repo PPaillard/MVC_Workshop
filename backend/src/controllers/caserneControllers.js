@@ -32,7 +32,9 @@ const add = (req, res) => {
 
   models.caserne
     .insert(caserne)
-    .then(res.sendStatus(201))
+    .then(([result]) => {
+      res.location(`/api/caserne/${result.insertId}`).sendStatus(201);
+    })
     .catch((error) => {
       console.error(error);
       res.sendStatus(500);
