@@ -1,11 +1,12 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import AllFireStation from "../pages/AllFireStation";
+import FireStationPage from "../pages/FireStationPage";
 import Home from "../pages/Home";
+import AllTruck from "../pages/AllTruck";
 import Events from "../pages/Events";
 import Vehicles from "../pages/Vehicles";
 import Login from "../pages/Login";
-import TruckList from "./TruckList";
-import FirestationList from "./FirestationList";
 
 export default function Router() {
   return (
@@ -14,8 +15,9 @@ export default function Router() {
       <Route path="/events" element={<Events />} />
       <Route path="/vehicles" element={<Vehicles />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/trucklist" element={<TruckList />} />
-      <Route path="/firestationlist" element={<FirestationList />} />
+      <Route path="/allTruck" element={<AllTruck />} />
+      <Route path="/allFireStation" element={<AllFireStation />} />
+      <Route path="/fireStationPage" element={<FireStationPage />} />
     </Routes>
   );
 }

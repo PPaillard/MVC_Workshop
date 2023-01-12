@@ -29,7 +29,7 @@ const hashPassword = (req, res, next) => {
 
 const verifyPassword = (req, res) => {
   argon2
-    .verify(req.body.user_password, req.body.password, hashingOptions)
+    .verify(req.body.hashedPassword, req.body.password, hashingOptions)
     .then((isVerified) => {
       if (isVerified) {
         const token = jwt.sign({ sub: req.user.id }, JWT_SECRET, {

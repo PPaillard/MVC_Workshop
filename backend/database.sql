@@ -16,7 +16,7 @@ IF NOT EXISTS `user`
 (100) NOT NULL,
   `status` TINYINT
 (2) NOT NULL,
-  `user_password` VARCHAR
+  `hashedPassword` VARCHAR
 (200) NOT NULL,
   PRIMARY KEY
 (`id`))
