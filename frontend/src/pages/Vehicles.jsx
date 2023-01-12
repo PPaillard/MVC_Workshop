@@ -1,5 +1,10 @@
 import React from "react";
+import TruckModal from "../components/TruckModal";
 
 export default function Vehicles() {
-  return <div>Listes vehicules dispo</div>;
+  return (
+    <div className="flex items-center justify-center">
+      <TruckModal />
+    </div>
+  );
 }
