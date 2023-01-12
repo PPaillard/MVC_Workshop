@@ -12,26 +12,24 @@ const hashingOptions = {
 
 const hashPassword = (req, res, next) => {
   // hash the password using argon2 then call next()
-  if (req.body.password) {
-    argon2
-      .hash(req.body.password, hashingOptions)
-      .then((hashedPassword) => {
-        req.body.hashedPassword = hashedPassword;
-        delete req.body.password;
-        next();
-      })
-      .catch((err) => {
-        console.error(err);
-        res.sendStatus(400);
-      });
-  } else {
-    next();
-  }
+
+  argon2
+    .hash(req.body.password, hashingOptions)
+    .then((hashedPassword) => {
+      req.body.hashedPassword = hashedPassword;
+      delete req.body.password;
+      next();
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(400);
+    });
+  next();
 };
 
 const verifyPassword = (req, res) => {
   argon2
-    .verify(req.user.hashedPassword, req.body.password, hashingOptions)
+    .verify(req.body.user_password, req.body.password, hashingOptions)
     .then((isVerified) => {
       if (isVerified) {
         const token = jwt.sign({ sub: req.user.id }, JWT_SECRET, {
