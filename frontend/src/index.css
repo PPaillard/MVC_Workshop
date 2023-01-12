@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.leaflet-container {
+    width: 70vw;
+    height: 80vh;
+    z-index: 0;
+  }
