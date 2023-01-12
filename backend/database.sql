@@ -41,3 +41,59 @@ CREATE TABLE IF NOT EXISTS `firemen`.`vehicle` (
   FOREIGN KEY (`caserne_id`)
   REFERENCES `firemen`.`caserne` (`id`))
 ENGINE = InnoDB;
+
+
+INSERT INTO vehicle
+VALUE
+(
+'Renault',
+'VSAV',
+0,
+1,
+0
+),
+('Renault', 'VSAV', 0, 2, 0),
+('Man', 'VSAV', 0, 3, 0),
+('Man', 'VSAV', 0, 4, 0),
+('Renault', 'VSR', 0, 4, 0),
+('Renault', 'VSR', 0, 4, 0),
+('Mitsubishi', 'VSR', 0, 4, 0),
+('Mitsubishi', 'VSR', 0, 4, 0),
+('Mercedes', 'EPA', 0, 5, 0),
+('Mercedes', 'EPA', 0, 2, 0),
+('IVECO', 'EPA', 0, 1, 0),
+('IVECO', 'EPA', 0, 3, 0),
+('Mercedes', 'FPT', 0, 4, 0),
+('Mercedes', 'FPT', 0, 4, 0),
+('Mercedes', 'FPT', 0, 4, 0),
+('IVECO', 'FPT', 0, 5, 0),
+('IVECO', 'FPT', 0, 4, 0),
+('IVECO', 'FPT', 0, 3, 0),
+('Renault', 'CCF', 0, 2, 0),
+('Renault', 'CCF', 0, 1, 0);
+INSERT INTO caserne
+VALUE
+(1,
+'Caserne Lyon-Confluence',
+?,
+?),
+(2,
+'Centre dintervention Lyon Corneille',
+?,
+?),
+(3,
+'Centre dintervention Lyon Rochat',
+?,
+?),
+(4,
+'Caserne Lyon - Gerland',
+?,
+?),
+(5,
+'Centre dintervention Lyon Croix-Rousse',
+?,
+?),
+(6,
+'Rhône Sapeurs Pompiers',
+?,
+?);
